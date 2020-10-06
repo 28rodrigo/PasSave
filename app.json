@@ -1,0 +1,12 @@
+{
+  "name": "passave_2",
+  "displayName": "passave_2",
+  "expo": {
+    "name": "passave_2",
+    "slug": "passave_2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
