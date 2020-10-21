@@ -49,7 +49,8 @@ const styles=StyleSheet.create({
        // fontFamily:'Poppins_400Regular',
         fontSize:15,
 
-    }
+    },
+    
     
 });
 

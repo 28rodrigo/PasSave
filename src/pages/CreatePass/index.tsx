@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, ImageBackground, KeyboardAvoidingView, Platform, ToastAndroid } from 'react-native';
-import styles from './styles'
-import PageHeader from '../../components/PageHeader';
+import { View, Text,KeyboardAvoidingView, Platform, ToastAndroid } from 'react-native';
 import { ScrollView, RectButton } from 'react-native-gesture-handler';
-import Input from '../../components/Input';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+
+import styles from './styles'
 import Database from '../../database/Database'
 import Password from '../../models/Password';
+import Input from '../../components/Input';
+import PageHeader from '../../components/PageHeader';
 interface Response{
     operation:string
     row:Object;
@@ -15,6 +16,12 @@ interface Response{
 function CreatePass(){
     const db= new Database();
     const navigation=useNavigation();
+    const [url,seturl]=useState('');
+    const [nome,setnome]=useState('');
+    const [mail,setmail]=useState('');
+    const [password,setpassword]=useState('');
+    const [nota,setnota]=useState('')
+
     function handleBackButton(){
         navigation.goBack();
     }
@@ -27,22 +34,15 @@ function CreatePass(){
         
         const response=await db.addpass(pass) as Response
         if(response.operation="sucess"){
-            ToastAndroid.show('Password removida com sucesso',ToastAndroid.SHORT);
+            ToastAndroid.show('Password criada com sucesso',ToastAndroid.SHORT);
             navigation.goBack();
         }else{
             console.log(response)
             ToastAndroid.show('Erro a criar Password',ToastAndroid.LONG);
         }
-            
-
-       
+  
     }
-   const [url,seturl]=useState('');
-   const [nome,setnome]=useState('');
-   const [mail,setmail]=useState('');
-   const [password,setpassword]=useState('');
-   const [nota,setnota]=useState('')
-   
+  
     useEffect(()=>{
         // console.log('url'+url);
         // console.log('nome'+nome);
@@ -70,11 +70,11 @@ function CreatePass(){
             }}
             >
                 <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
-                <Input editable={true} updatestate={seturl} title='URL'/>
-                <Input editable={true} updatestate={setnome} title='Nome'/>
-                <Input editable={true} updatestate={setmail} title='Email/Username'/>
-                <Input editable={true} updatestate={setpassword} title='Password' type="pass"/>
-                <Input editable={true} updatestate={setnota} title='Notas' type="bio"/>
+                <Input content={url} editable={true} updatestate={seturl} title='URL'/>
+                <Input content={nome} editable={true} updatestate={setnome} title='Nome'/>
+                <Input content={mail} editable={true} updatestate={setmail} title='Email/Username'/>
+                <Input content={password} editable={true} updatestate={setpassword} title='Password' type="pass"/>
+                <Input content={nota} editable={true} updatestate={setnota} title='Notas' type="bio"/>
                 
                 <RectButton onPress={handleSaveButton} style={styles.button}>
                      <Text style={styles.buttonText}>Guardar alterações</Text>

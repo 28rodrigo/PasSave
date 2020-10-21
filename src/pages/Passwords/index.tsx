@@ -1,15 +1,14 @@
 import React, {useState,useEffect} from 'react'
-import { View, Text, Image, TextInput, ToastAndroid } from 'react-native';
-import styles from './styles'
+import { View, ToastAndroid } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
-import PageHeader from '../../components/PageHeader';
-import googleImage from '../../assets/images/googlelogo.png'
-import PassItem from '../../components/PassItem';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
+
 import Database from '../../database/Database';
-import Password from '../../models/Password';
 import Modals from '../../components/modal';
+import PageHeader from '../../components/PageHeader';
+import PassItem from '../../components/PassItem';
+import styles from './styles'
 interface Res{
     rows:Response
     operation:string
@@ -28,6 +27,7 @@ interface Params{
     nota: string;
 }
 function Passwords(){
+    const navigation=useNavigation()
     const isFocused=useIsFocused()
     const db= new Database();
     const [passwords,setpasswords]=useState([]);
@@ -60,7 +60,7 @@ function Passwords(){
         else
             return
     },[isFocused,isclicked])
-    const navigation=useNavigation()
+    
     useEffect(()=>{
 
     },[ismodalVisible,ismodalErrorVisible])
@@ -93,16 +93,12 @@ function Passwords(){
                     
                     return <PassItem updatestate={setIsClicked} key={pass.id} Id={pass.id} nome={pass.nome} mail={pass.mail} url={pass.url} nota={pass.nota} password={pass.password} ></PassItem>
                 })}
-                {/* <PassItem/>
-                <PassItem/>
-                <PassItem/>
-                <PassItem/>
-                <PassItem/> */}
+               
             </ScrollView>
             
         </View>
-            <Modals title={['Sem Passwords guardadas!','Criar Password']} isvisible={ismodalVisible} action={handleCreateButton}></Modals>
-            <Modals title={['Erro a carregar Passwords!','Tentar Novamente']} isvisible={ismodalErrorVisible} action={getdata}></Modals>
+            <Modals type="sad" title={['Sem Passwords guardadas!','Criar Password']} isvisible={ismodalVisible} action={handleCreateButton}></Modals>
+            <Modals type="sad" title={['Erro a carregar Passwords!','Tentar Novamente']} isvisible={ismodalErrorVisible} action={getdata}></Modals>
         
         </>
     );

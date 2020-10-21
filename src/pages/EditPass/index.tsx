@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ImageBackground,KeyboardAvoidingView, Platform, ToastAndroid } from 'react-native';
-import styles from './styles'
-import PageHeader from '../../components/PageHeader';
+import { View, Text,KeyboardAvoidingView, Platform, ToastAndroid } from 'react-native';
 import { ScrollView, RectButton } from 'react-native-gesture-handler';
-import Input from '../../components/Input';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import { useNavigation,useRoute } from '@react-navigation/native';
+
 import Database from '../../database/Database';
 import Password from '../../models/Password';
+import Input from '../../components/Input';
+import styles from './styles'
+import PageHeader from '../../components/PageHeader';
 interface Res{
     rows:Response
     operation:string
@@ -32,6 +33,7 @@ function EditPass(){
     const [mail,setmail]=useState('');
     const [passwords,setpasswords]=useState('');
     const [nota,setnota]=useState('')
+
     function handleBackButton(){
         nav.goBack();
     }
@@ -54,18 +56,9 @@ function EditPass(){
         }
         
     }
-     function handleEditButton(){
+    function handleEditButton(){
         setedit(true);
      }
-    useEffect(()=>{
-       
-    },[url,nome,mail,passwords,nota,edit])
-    useEffect(()=>{
-        const {id}= route.params as Params
-        console.log(route.params)
-        getdata(id); 
-    },[])
-    
     async function handleSaveButton(){
         const {id}= route.params as Params
         if(url=='' || nome=='' || mail=='' || passwords==''){
@@ -83,9 +76,19 @@ function EditPass(){
         }
     }
     
+    useEffect(()=>{
+       
+    },[url,nome,mail,passwords,nota,edit])
+
+    useEffect(()=>{
+        const {id}= route.params as Params
+        console.log(route.params)
+        getdata(id); 
+    },[])
+    
+    
     return(
         <>
-        
             <PageHeader title='Info Password' headerMinus={
                 <RectButton style={{borderRadius:10,width:32,height:32,alignItems:"center"}} onPress={handleBackButton}>
                 <Ionicons name="ios-arrow-round-back" size={32} color="white" />

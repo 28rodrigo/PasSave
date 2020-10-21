@@ -32,8 +32,8 @@ const styles=StyleSheet.create({
     profiletext:{
         marginBottom:-5,
         fontSize:35,
-        color:'#32264d',   
-       // fontFamily:'Sriracha_400Regular'
+        color:'#3226ad',
+        fontFamily:'Sriracha_400Regular'
     },
     avatar:{
         width:58,

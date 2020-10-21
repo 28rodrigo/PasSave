@@ -24,9 +24,10 @@ export default function App() {
     Poppins_600SemiBold,
     Sriracha_400Regular
   })
-  if(false){
-    return <ImageBackground source={require('./src/assets/images/Splash.png')} resizeMode='cover' style={{ flex:1}} > 
-         </ImageBackground>  
+  if(!fontsLoaded){
+    return <AppLoading/> 
+        // <ImageBackground source={require('./src/assets/images/Splash.png')} resizeMode='cover' style={{ flex:1}} > 
+        //  </ImageBackground> 
   }else{
     return (
       <>

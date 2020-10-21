@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Image, TextInput, ToastAndroid, Clipboard } from 'react-native';
-import styles from './styles'
+import { View, Text, TextInput, ToastAndroid, Clipboard } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { RectButton, TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import PageHeader from '../../components/PageHeader';
-import googleImage from '../../assets/images/googlelogo.png'
-import Input from '../Input';
 import { useNavigation } from '@react-navigation/native';
+
+
 import Database from '../../database/Database';
+import styles from './styles'
+import Input from '../Input';
 interface Res{
     rows:Response
     operation:string
@@ -66,6 +66,7 @@ const PassItem:React.FC<PassItemProps>=({Id,nome,url,mail,password,nota,updatest
         console.log('ide='+ide)
         
     },[])
+    
     useEffect(()=>{
 
     },[isClicked])

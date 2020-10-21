@@ -33,14 +33,15 @@ const styles=StyleSheet.create({
       justifyContent:"center",
       alignItems:"center",
       height:50,
-      paddingHorizontal:50,
+      paddingHorizontal:30,
       borderRadius:8,
       borderWidth:4,
       borderColor:"#fff",
       marginTop:200,
   },
   buttonText:{
-      color:'#003',
+      color:'#003f',
+      fontSize:18
     //  fontFamily:'Poppins_600SemiBold',
       
   }

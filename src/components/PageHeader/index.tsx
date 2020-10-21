@@ -1,9 +1,7 @@
 import React ,{ReactNode} from 'react'
-import {Ionicons} from '@expo/vector-icons'
-import styles from './styles'
 import { View,Text } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
 
+import styles from './styles'
 interface PageHeaderProps{
     title: string;
     headerPlus ?: ReactNode;
